@@ -1,12 +1,12 @@
 #include <Arduino.h>
 #include <DHT.h>
 
-#define PINO_DHT 5     
-#define TIPO_DHT DHT22   
+#define PINO_DHT 5
+#define TIPO_DHT DHT22
 
 DHT dht(PINO_DHT, TIPO_DHT);
 
-void setup() 
+void setup()
 {
   Serial.begin(115200);
   Serial.println();
@@ -16,7 +16,7 @@ void setup()
   Serial.println("=======================");
 }
 
-void loop() 
+void loop()
 {
   delay(2000);
 
@@ -24,7 +24,7 @@ void loop()
   float tempCelsius = dht.readTemperature();
   float tempFahrenheit = dht.readTemperature(true);
 
-  if(isnan(umidade) || isnan(tempCelsius)) 
+  if (isnan(umidade) || isnan(tempCelsius))
   {
     Serial.println("Falha ao iniciar o sensor");
     Serial.println("Verifique a conexão e o pino definido");
@@ -37,5 +37,4 @@ void loop()
   Serial.printf("Umidade: %.0f %\n\f", umidade);
   Serial.printf("Sensação térmica: %.1f °C\n\f", sensacaoTerm);
   Serial.print("\n---------------------------------------\n");
-  
 }
